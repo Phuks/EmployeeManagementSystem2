@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>aspnet-EmployeeManagementSystem2-5CC0461A-8DB9-492B-8EE8-A20A54493BA4</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20201122092834_AddedFKeysToEmpWageRateAndCreatedEmpHistoryTable.cs" />
+    <Compile Remove="Migrations\20201122092834_AddedFKeysToEmpWageRateAndCreatedEmpHistoryTable.Designer.cs" />
+    <Compile Remove="Migrations\20201122095150_CreatedHistoryTableAndAddedFKs.cs" />
+    <Compile Remove="Migrations\20201122095150_CreatedHistoryTableAndAddedFKs.Designer.cs" />
+    <Compile Remove="Migrations\20201122100433_ReinstatingEmployeeWageRateTable.cs" />
+    <Compile Remove="Migrations\20201122100433_ReinstatingEmployeeWageRateTable.Designer.cs" />
+    <Compile Remove="Migrations\20201122101059_AdjustmentsToEmpWageAndEmpHistory.cs" />
+    <Compile Remove="Migrations\20201122101059_AdjustmentsToEmpWageAndEmpHistory.Designer.cs" />
+    <Compile Remove="Migrations\20201122101706_FixingMigrations.cs" />
+    <Compile Remove="Migrations\20201122101706_FixingMigrations.Designer.cs" />
+    <Compile Remove="Migrations\20201122105003_EmployeeInitialCreate.cs" />
+    <Compile Remove="Migrations\20201122105003_EmployeeInitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20201122114058_InquiryInitialCreate.cs" />
+    <Compile Remove="Migrations\20201122114058_InquiryInitialCreate.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.9" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.9" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Data\Migrations\" />
+  </ItemGroup>
+
+</Project>
