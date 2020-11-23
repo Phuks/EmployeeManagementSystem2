@@ -1,0 +1,65 @@
+﻿@model EmployeeManagementSystem2.Models.EmployeeTypeDetailVM
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Employee Details:</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="EducationField" class="control-label"></label>
+                <input asp-for="EducationField" class="form-control" />
+                <span asp-validation-for="EducationField" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Education" class="control-label"></label>
+                <input asp-for="Education" class="form-control" />
+                <span asp-validation-for="Education" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BusinessTravel" class="control-label"></label>
+                <input asp-for="BusinessTravel" class="form-control" />
+                <span asp-validation-for="BusinessTravel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DistanceFromHome" class="control-label"></label>
+                <input asp-for="DistanceFromHome" class="form-control" />
+                <span asp-validation-for="DistanceFromHome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="JobRole" class="control-label"></label>
+                <input asp-for="JobRole" class="form-control" />
+                <span asp-validation-for="JobRole" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="JobInvolvement" class="control-label"></label>
+                <input asp-for="JobInvolvement" class="form-control" />
+                <span asp-validation-for="JobInvolvement" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="JobLevel" class="control-label"></label>
+                <input asp-for="JobLevel" class="form-control" />
+                <span asp-validation-for="JobLevel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary btn-block" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" class="btn btn-outline-dark">
+        <i class="fa fa-undo" aria-hidden="true"></i> Back to List
+    </a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

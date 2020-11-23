@@ -20,14 +20,19 @@
     <Compile Remove="Migrations\20201122105003_EmployeeInitialCreate.Designer.cs" />
     <Compile Remove="Migrations\20201122114058_InquiryInitialCreate.cs" />
     <Compile Remove="Migrations\20201122114058_InquiryInitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20201123010035_ChangesToDatabaseGeneratingAutomaticViews.cs" />
+    <Compile Remove="Migrations\20201123010035_ChangesToDatabaseGeneratingAutomaticViews.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.9" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.9" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.9" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.9" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
   </ItemGroup>
 
   <ItemGroup>

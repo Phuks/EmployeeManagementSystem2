@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using EmployeeManagementSystem2.Models;
 
 namespace EmployeeManagementSystem2.Data
 {
@@ -19,5 +20,7 @@ namespace EmployeeManagementSystem2.Data
         public DbSet<EmployeeWageRate> EmployeeWageRates { get; set; }
         public DbSet<EmployeeHistory> EmployeeHistories { get; set; }
         public DbSet<Inquiry> Inquiries { get; set; }
+        public DbSet<EmployeeManagementSystem2.Models.EmployeeTypeDetailVM> EmployeeTypeDetailVM { get; set; }
+        public DbSet<EmployeeManagementSystem2.Models.EmployeeWageRateVM> EmployeeWageRateVM { get; set; }
     }
 }

@@ -1,0 +1,35 @@
+﻿@model EmployeeManagementSystem2.Models.CreateEmployeeWageRateVM
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Job Role
+            </th>
+
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.EmployeeTypes)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.JobRole)
+                </td>
+
+                <td>
+                    <a class="btn btn-outline-success" asp-action="SetWage" asp-route-id="@item.Id">
+                        <i class="fa fa-money" aria-hidden="true"></i> Pay Employees
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

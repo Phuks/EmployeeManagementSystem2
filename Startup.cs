@@ -12,6 +12,10 @@ using EmployeeManagementSystem2.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using EmployeeManagementSystem2.Repository;
+using EmployeeManagementSystem2.Interfaces;
+using AutoMapper;
+using EmployeeManagementSystem2.Mappings;
 
 namespace EmployeeManagementSystem2
 {
@@ -27,18 +31,34 @@ namespace EmployeeManagementSystem2
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // Injection Dependencies
+            // Injection Dependencies Initializations
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            //Add references for Interface and Repository to Startup file (Implementing Repository Pattern)
+            services.AddScoped<IEmployeeHistoryRepository, EmployeeHistoryRepository>();
+            services.AddScoped<IEmployeeTypeDetailRepository, EmployeeTypeDetailRepository>();
+            services.AddScoped<IEmployeeWageRateRepository, EmployeeWageRateRepository>();
+            services.AddScoped<IInquiryRespository, InquiryRepository>();
+
+            // Adding a service that adds an AutoMapper configuration file in the form of the Maps file
+            services.AddAutoMapper(typeof(Maps));
+
+            services.AddDefaultIdentity<IdentityUser>()
+                .AddRoles<IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>();      // services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app,
+            IWebHostEnvironment env,
+            UserManager<IdentityUser> userManager,
+            RoleManager<IdentityRole> roleManager
+        )
         {
             if (env.IsDevelopment())
             {
@@ -58,6 +78,8 @@ namespace EmployeeManagementSystem2
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            SeedData.Seed(userManager, roleManager);            // Static Fucntion
 
             app.UseEndpoints(endpoints =>
             {

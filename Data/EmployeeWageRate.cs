@@ -32,5 +32,7 @@ namespace EmployeeManagementSystem2.Data
         public EmployeeTypeDetail EmployeeType { get; set; }
         public int EmployeeTypeId { get; set; }
         public DateTime DateCreated { get; set; }
+        public int Period { get; set; }
+      
     }
 }

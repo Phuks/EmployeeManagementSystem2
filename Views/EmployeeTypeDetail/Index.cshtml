@@ -1,0 +1,102 @@
+﻿@using Microsoft.AspNetCore.Identity
+@*@using EmployeeManagementSystem.Data*@
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@model IEnumerable<EmployeeManagementSystem2.Models.EmployeeTypeDetailVM>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Employee Details</h1>
+
+<hr />
+
+<p>
+    <a asp-action="Create" class="btn btn-success">
+        <i class="fa fa-plus" aria-hidden="true"></i>
+        Create New
+    </a>
+</p>
+<table id="tblData" class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EducationField)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Education)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BusinessTravel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DistanceFromHome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JobRole)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JobInvolvement)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JobLevel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateCreated)
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EducationField)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Education)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BusinessTravel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DistanceFromHome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.JobRole)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.JobInvolvement)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.JobLevel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateCreated)
+                </td>
+                <td>
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <a asp-action="Details" class="btn btn-info" asp-route-id="@item.Id">
+                            <i class="fa fa-info-circle" aria-hidden="true"></i>
+                        </a>
+
+                        if (User.IsInRole("Admin"))
+                        {
+                            <a asp-action="Edit" class="btn btn-warning" asp-route-id="@item.Id">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </a>
+                            <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.Id" onclick="return confirm('Are you sure you want to delete the record?')">
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </a>
+                        }
+                    }
+
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

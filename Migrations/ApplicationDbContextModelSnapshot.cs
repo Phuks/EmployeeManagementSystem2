@@ -72,7 +72,7 @@ namespace EmployeeManagementSystem2.Migrations
                     b.Property<string>("BusinessTravel")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("DateCreated")
+                    b.Property<DateTime?>("DateCreated")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("DistanceFromHome")
@@ -134,6 +134,9 @@ namespace EmployeeManagementSystem2.Migrations
                     b.Property<int>("PercentSalaryHike")
                         .HasColumnType("int");
 
+                    b.Property<int>("Period")
+                        .HasColumnType("int");
+
                     b.Property<int>("StandardHours")
                         .HasColumnType("int");
 
@@ -182,6 +185,45 @@ namespace EmployeeManagementSystem2.Migrations
                     b.HasIndex("RequestingEmployeeId");
 
                     b.ToTable("Inquiries");
+                });
+
+            modelBuilder.Entity("EmployeeManagementSystem2.Models.EmployeeTypeDetailVM", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("BusinessTravel")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("DistanceFromHome")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Education")
+                        .HasColumnType("int");
+
+                    b.Property<string>("EducationField")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("JobInvolvement")
+                        .HasColumnType("int");
+
+                    b.Property<int>("JobLevel")
+                        .HasColumnType("int");
+
+                    b.Property<string>("JobRole")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("EmployeeTypeDetailVM");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
